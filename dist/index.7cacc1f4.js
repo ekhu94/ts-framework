@@ -447,6 +447,9 @@ const mikasa = new _modelsUser.User({
   name: 'Mikasa',
   age: 16
 });
+mikasa.set({
+  age: 17
+});
 console.log(mikasa.get('name'));
 console.log(mikasa.get('age'));
 
@@ -464,7 +467,10 @@ class User {
     return this.data[propName];
   }
   set(update) {
-    this.data = update;
+    this.data = {
+      ...this.data,
+      ...update
+    };
   }
 }
 
