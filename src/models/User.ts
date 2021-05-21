@@ -19,6 +19,8 @@ export class User {
   }
 
   on(eventName: string, callback: Callback): void {
-    this.events[eventName].push(callback);
+    const handler = this.events[eventName] || [];
+    handler.push(callback);
+    this.events[eventName] = handler;
   }
 }
